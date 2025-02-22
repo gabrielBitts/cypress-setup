@@ -1,0 +1,6 @@
+#root
+node_modules
+
+
+#./Cypress
+cypress/downloads
