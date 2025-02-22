@@ -3,9 +3,8 @@ import { defineConfig } from 'cypress'
 module.exports = defineConfig({
   chromeWebSecurity: false,
   retries: 2,
-  reporter: 'cypress-multi-reporters',
+  reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
-    reporterEnabled: 'cypress-mochawesome-reporter, spec',
     cypressMochawesomeReporterReporterOptions: {
       charts: true,
       reportPageTitle: 'cypress-mochawesome-reports',
