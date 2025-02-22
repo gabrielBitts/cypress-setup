@@ -13,7 +13,7 @@ module.exports = defineConfig({
   },
   e2e: {
     baseUrl: 'https://start.duckduckgo.com/',
-    specPattern: 'cypress/e2e/*.cy.ts',
+    specPattern: 'cypress/{api,e2e}/*.cy.ts',
     testIsolation: false,
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on)
