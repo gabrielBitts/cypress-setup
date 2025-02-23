@@ -4,7 +4,13 @@ orbs:
 
 jobs:
   install:
-    command: yarn install
+    executor: cypress/default
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn install
+
   run-cypress:
     executor: cypress/default
     steps:
