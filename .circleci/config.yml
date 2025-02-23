@@ -11,17 +11,17 @@ jobs:
     executor: cypress/default
     steps:
       - cypress/run-tests:
-        cypress-command: yarn cy:run
+          cypress-command: yarn cy:run
       - store_artifacts:
           name: Uploading Reports
-          path: cypress/reports
+          path: /cypress/reports/html/index.html
 
 workflows:
-  tests:
+  use-my-orb:
     jobs:
       - install:
-        name:
-          Installing Packages
+          name: Installing Packages
       - run-cypress:
-          name:
-            Running Cypress Tests
+          name: Run Cypress Tests
+          requires:
+            - Installing Packages
