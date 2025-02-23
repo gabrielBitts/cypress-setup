@@ -1,10 +1,27 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
+
+jobs:
+  install:
+    executor: cypress/default
+    steps:
+      - cypress/install
+  run-cypress:
+    executor: cypress/default
+    steps:
+      - cypress/run-tests:
+        cypress-command: yarn cy:run
+      - store_artifacts:
+          name: Uploading Reports
+          path: cypress/reports
+
 workflows:
-  test:
+  tests:
     jobs:
-      - cypress/run:
-          install-browsers: true
-          package-manager: 'yarn'
-          start-command: 'yarn cy:run --browser chrome'
+      - install:
+        name:
+          Installing Packages
+      - run-cypress:
+          name:
+            Running Cypress Tests
