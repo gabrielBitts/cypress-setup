@@ -2,29 +2,12 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
 
-jobs:
-  install:
-    executor: cypress/default
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: yarn install
-
-  run-cypress:
-    executor: cypress/default
-    steps:
-      - cypress/run-tests:
-          cypress-command: yarn cy:run
-      - store_artifacts:
-          name: Uploading Reports
-          path: /cypress/reports/html/index.html
-
 workflows:
   run-cypress-tests:
     jobs:
-      - install
       - run-cypress:
-          name: Run Cypress Tests
-          requires:
-            - install
+          package-manager: 'yarn'
+          start-command: 'yarn cy:run'
+      - store_artifacts:
+          name: Uploading Reports
+          path: /cypress/reports/html/index.html
