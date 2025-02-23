@@ -23,8 +23,7 @@ jobs:
 workflows:
   run-cypress-tests:
     jobs:
-      - install:
-        name: Installing Packages
+      - install
       - run-cypress:
           name: Run Cypress Tests
           requires:
