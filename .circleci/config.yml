@@ -2,11 +2,18 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
 
+jobs:
+  run-cypress:
+    executor: cypress/default
+    steps:
+      - checkout
+      - cypress/run-tests:
+          cypress-command: yarn cy:run
+      - store_artifacts:
+          name: Uploading Reports
+          path: /cypress/reports/html/index.html
+
 workflows:
-  jobs:
-    - run-cypress:
-        package-manager: 'yarn'
-        start-command: 'yarn cy:run'
-    - store_artifacts:
-        name: Uploading Reports
-        path: /cypress/reports/html/index.html
+  run-cypress-tests:
+    jobs:
+      - run-cypress
