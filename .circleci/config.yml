@@ -3,11 +3,10 @@ orbs:
   cypress: cypress-io/cypress@3
 
 workflows:
-  run-cypress-tests:
-    jobs:
-      - run-cypress:
-          package-manager: 'yarn'
-          start-command: 'yarn cy:run'
-      - store_artifacts:
-          name: Uploading Reports
-          path: /cypress/reports/html/index.html
+  jobs:
+    - run-cypress:
+        package-manager: 'yarn'
+        start-command: 'yarn cy:run'
+    - store_artifacts:
+        name: Uploading Reports
+        path: /cypress/reports/html/index.html
