@@ -7,8 +7,12 @@ jobs:
     executor: cypress/default
     steps:
       - checkout
-      - cypress/run-tests:
-          cypress-command: yarn cy:run
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Run Cypress Tests
+          command: yarn cy:run
       - store_artifacts:
           name: Uploading Reports
           path: /cypress/reports/html/index.html
