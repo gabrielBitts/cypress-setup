@@ -14,8 +14,8 @@ jobs:
           name: Run Cypress Tests
           command: yarn cy:run
       - store_artifacts:
-          name: Uploading Reports
-          path: /cypress/reports/html/index.html
+          name: Uploading HTML Report
+          path: cypress/reports/html/index.html
 
 workflows:
   run-cypress-tests:
