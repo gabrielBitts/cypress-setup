@@ -17,7 +17,7 @@ jobs:
           path: /cypress/reports/html/index.html
 
 workflows:
-  use-my-orb:
+  run-cypress-tests:
     jobs:
       - install:
           name: Installing Packages
