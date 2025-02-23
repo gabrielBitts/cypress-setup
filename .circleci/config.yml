@@ -4,9 +4,7 @@ orbs:
 
 jobs:
   install:
-    executor: cypress/default
-    steps:
-      - cypress/install
+    command: yarn install
   run-cypress:
     executor: cypress/default
     steps:
@@ -24,4 +22,4 @@ workflows:
       - run-cypress:
           name: Run Cypress Tests
           requires:
-            - Installing Packages
+            - install
