@@ -1,7 +1,8 @@
 #root
 node_modules
 
-
 #./Cypress
 cypress/downloads
 cypress/reports
+cypress/screenshots
+cypress/videos
