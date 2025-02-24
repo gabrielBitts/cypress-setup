@@ -1,7 +1,9 @@
 #root
 node_modules
-
+.env
 
 #./Cypress
 cypress/downloads
 cypress/reports
+cypress/screenshots
+cypress/videos
