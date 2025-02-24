@@ -8,6 +8,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install node 18
+          command: |
+            nvm install 18.18
+            nvm use 18.18
+      - run:
           name: Install dependencies
           command: yarn install
       - run:
