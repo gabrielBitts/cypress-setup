@@ -1,0 +1,26 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@3
+
+jobs:
+  run-cypress:
+    executor: cypress/default
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Run Cypress Tests
+          command: yarn cy:run
+      - run:
+          name: Wait for report generation
+          command: sleep 10
+      - store_artifacts:
+          name: Uploading HTML Report
+          path: cypress/reports/html
+
+workflows:
+  run-cypress-tests:
+    jobs:
+      - run-cypress

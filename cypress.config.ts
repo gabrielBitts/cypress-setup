@@ -7,7 +7,8 @@ module.exports = defineConfig({
   reporterOptions: {
     cypressMochawesomeReporterReporterOptions: {
       charts: true,
-      reportPageTitle: 'cypress-mochawesome-reports',
+      reportPageTitle: 'Cypress Tests Report',
+      videoOnFailOnly: true
     },
   },
   e2e: {
