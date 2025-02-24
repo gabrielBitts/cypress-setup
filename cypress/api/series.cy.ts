@@ -2,7 +2,7 @@ describe('DuckDuckGo API Request Tests', () => {
     it('Get DuckDuckGo Response Should be 200 and Return Image Url', () => {
         cy.request(
             'GET',
-            'https://api.duckduckgo.com/?q=the+simpsons&format=json'
+            `${Cypress.env('apiUrl')}`
         ).then((response) => {
             expect(response.status).to.eq(200)
 
