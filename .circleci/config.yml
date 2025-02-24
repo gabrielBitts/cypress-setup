@@ -6,12 +6,16 @@ jobs:
   build:
     docker:
       - image: cimg/node:20.9
+    steps:
+      - run:
+          name: Check node version
+          command: node -v
   run-cypress:
     executor: cypress/default
     steps:
       - checkout
       - run:
-          name: Install dependencies
+          name: Install ependencies
           command: yarn install
       - run:
           name: Run Cypress Tests
@@ -26,4 +30,7 @@ jobs:
 workflows:
   run-cypress-tests:
     jobs:
-      - run-cypress
+      - build
+      - run-cypress:
+          requires:
+            - build
