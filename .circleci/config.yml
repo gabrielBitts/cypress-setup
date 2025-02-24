@@ -3,14 +3,13 @@ orbs:
   cypress: cypress-io/cypress@3
 
 jobs:
+  build:
+    docker:
+      - image: cimg/node:20.9
   run-cypress:
     executor: cypress/default
     steps:
       - checkout
-      - run:
-          name: Install node 18.18
-          command: |
-            curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s 18.18.0
       - run:
           name: Install dependencies
           command: yarn install
