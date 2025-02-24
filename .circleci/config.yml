@@ -5,13 +5,9 @@ orbs:
 jobs:
   run-cypress:
     docker:
-      - image: cimg/node:20.9
-    executor: cypress/default
+      - image: cypress/included:14.0.3
     steps:
       - checkout
-      - run:
-          name: Install ependencies
-          command: yarn install
       - run:
           name: Run Cypress Tests
           command: yarn cy:run
