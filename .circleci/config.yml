@@ -3,14 +3,9 @@ orbs:
   cypress: cypress-io/cypress@3
 
 jobs:
-  build:
+  run-cypress:
     docker:
       - image: cimg/node:20.9
-    steps:
-      - run:
-          name: Check node version
-          command: node -v
-  run-cypress:
     executor: cypress/default
     steps:
       - checkout
@@ -30,7 +25,4 @@ jobs:
 workflows:
   run-cypress-tests:
     jobs:
-      - build
-      - run-cypress:
-          requires:
-            - build
+      - run-cypress
