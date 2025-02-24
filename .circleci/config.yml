@@ -8,10 +8,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install node 18
+          name: Install node 18.18
           command: |
-            nvm install 18.18
-            nvm use 18.18
+            curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s 18.18.0
       - run:
           name: Install dependencies
           command: yarn install
