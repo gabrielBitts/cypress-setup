@@ -1,5 +1,5 @@
-import SearchPage from '../pageObjects/search.screen'
-import ResultsPage from '../pageObjects/results.screen'
+import * as Search from '../support/actions/search.actions'
+import * as Results from '../support/actions/results.actions'
 
 before('Navigate to DuckDuckGo Page', () => {
   cy.visit('')
@@ -7,14 +7,11 @@ before('Navigate to DuckDuckGo Page', () => {
 
 describe('DuckDuckGo Search', () => {
   it('Should search "Android" and assert it is being shown', () => {
-    SearchPage.typeSearchText('Android')
-    SearchPage.searchButtonClick()
-    ResultsPage.checkDisplayedText('Android')
-    ResultsPage.checkDisplayedUrl('www.android.com')
+    Search.searchText('Android')
+    Results.checkDisplayedResults('Android', 'www.android.com')
   })
 
   it('Should Validate if Regions Size is Greater Than 10', () => {
-    ResultsPage.clickOnRegions()
-    ResultsPage.checkRegionsArraySize(10)
+    Results.checkRegionsArraySize(10)
   })
 })
