@@ -5,9 +5,18 @@ orbs:
 jobs:
   run-cypress:
     docker:
-      - image: cypress/included:14.0.3
+      - image: cypress/included:14.0.0
     steps:
+      - run:
+          name: Fix Git safe directory issue
+          command: git config --global --add safe.directory /tmp/_circleci_local_build_repo
       - checkout
+      - run:
+          name: Debug checkout
+          command: ls -la
+      - run:
+          name: Install dependencies
+          command: yarn install
       - run:
           name: Run Cypress Tests
           command: yarn cy:run
