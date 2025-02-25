@@ -1,7 +1,8 @@
+import * as report from 'cypress-mochawesome-reporter/plugin'
 import { defineConfig } from 'cypress'
 import 'dotenv/config'
 
-module.exports = defineConfig({
+export default defineConfig({
   chromeWebSecurity: false,
   retries: 2,
   reporter: 'cypress-mochawesome-reporter',
@@ -19,8 +20,8 @@ module.exports = defineConfig({
     baseUrl: process.env.BASE_URL,
     specPattern: 'cypress/{api,e2e}/*.cy.ts',
     testIsolation: false,
-    setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on)
+    setupNodeEvents(on) {
+      report(on)
     },
   },
 })
