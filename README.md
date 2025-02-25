@@ -12,7 +12,7 @@ This is an automated testing project using [Cypress](https://www.cypress.io/) to
 ---
 
 ## 📌 Prerequisites
-Make sure you have **Node.js** (v18 or later) and **Yarn** installed.
+Make sure you have **Node.js** (18.18.0 or later) and **Yarn** installed.
 
 ### **Installation**
 Clone the repository and install dependencies:
@@ -38,16 +38,12 @@ yarn cy:open
 ```
 
 ### **Run Linter**
+
 Check code quality using ESLint:
 ```sh
 yarn lint
 ```
-
-### **Pre-commit Hooks**
-Husky is configured to run before each commit:
-```sh
-yarn prepare
-```
+Husky is configured to run before each commit
 
 ---
 
@@ -74,5 +70,3 @@ yarn prepare
 
 ## 📄 License
 This project is licensed under the [MIT License](LICENSE).
-
----
