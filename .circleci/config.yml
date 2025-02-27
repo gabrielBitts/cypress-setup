@@ -28,7 +28,6 @@ jobs:
           name: Uploading HTML Report
           path: cypress/reports/html
       - slack/notify:
-          channel: "#reports"
           event: fail
           custom: slack-message.json
 
