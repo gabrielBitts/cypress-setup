@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@3
+  slack: circleci/slack@5.1.1
 
 jobs:
   run-cypress:
@@ -26,6 +27,10 @@ jobs:
       - store_artifacts:
           name: Uploading HTML Report
           path: cypress/reports/html
+      - slack/notify:
+          channel: "#reports"
+          event: fail
+          custom: slack-message.json
 
 workflows:
   run-cypress-tests:
