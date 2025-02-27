@@ -10,7 +10,7 @@ describe('DuckDuckGo API Request Tests', () => {
             const results = responseBody.Results
 
             if (results.length > 0) {
-                const iconUrl = results[0].Icon.URL
+                const iconUrl = results[55].Icon.URL
                 cy.log(iconUrl)
             } else {
                 cy.log('No Icon URL Found')
