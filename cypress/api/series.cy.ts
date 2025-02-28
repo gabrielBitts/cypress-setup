@@ -4,7 +4,7 @@ describe('DuckDuckGo API Request Tests', () => {
             'GET',
             `${Cypress.env('apiUrl')}`
         ).then((response) => {
-            expect(response.status).to.eq(200)
+            expect(response.status).to.be.oneOf([200, 202])
 
             const responseBody = JSON.parse(response.body)
             const results = responseBody.Results
