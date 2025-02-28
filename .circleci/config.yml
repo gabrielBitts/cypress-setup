@@ -75,6 +75,7 @@ jobs:
                 }
               ]
             }
+          channel: "#reports"
 
 workflows:
   run-cypress-tests:
