@@ -33,10 +33,11 @@ jobs:
       - run:
           name: Set Slack Template
           command: |
-              echo 'export SLACK_TEMPLATE=$(cat ./templates/slack-message.json)' >> $BASH_ENV
+            export SLACK_TEMPLATE=$(cat ./templates/slack-message.json)
+            echo "SLACK_TEMPLATE=${SLACK_TEMPLATE}" >> $BASH_ENV
       - slack/notify:
           event: fail
-          custom: SLACK_TEMPLATE
+          custom: $SLACK_TEMPLATE
           channel: "#reports"
 
 workflows:
