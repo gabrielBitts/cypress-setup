@@ -32,7 +32,49 @@ jobs:
           path: cypress/reports/html
       - slack/notify:
           event: fail
-          custom: ./slack-message.json
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*❌ Cypress Test Failed!*"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Project:* My Project"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Branch:* ${CIRCLE_BRANCH}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Commit:* ${CIRCLE_SHA1}"
+                    }
+                  ]
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "🔍 View Logs"
+                      },
+                      "url": "${CIRCLE_BUILD_URL}",
+                      "style": "primary"
+                    }
+                  ]
+                }
+              ]
+            }
 
 workflows:
   run-cypress-tests:
