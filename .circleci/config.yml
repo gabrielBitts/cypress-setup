@@ -33,51 +33,60 @@ jobs:
       - slack/notify:
           event: fail
           custom: |
-              {
-                "blocks": [
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*Cypress Test Failed! :shipit:*"
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "fields": [
-                      {
-                        "type": "mrkdwn",
-                        "text": "*Branch:*\n${CIRCLE_BRANCH}"
-                      },
-                      {
-                        "type": "mrkdwn",
-                        "text": "*Commit:*\n${CIRCLE_SHA1}"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*Action Required:*\nPlease check the logs and investigate the failure."
-                    }
-                  },
-                  {
-                    "type": "actions",
-                    "elements": [
-                      {
-                        "type": "button",
-                        "text": {
-                          "type": "plain_text",
-                          "text": "🔍 View Logs"
-                        },
-                        "url": "${CIRCLE_BUILD_URL}",
-                        "style": "primary"
-                      }
-                    ]
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Cypress Test Failed! :shipit:*"
                   }
-                ]
-              }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Branch:*\n${CIRCLE_BRANCH}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Commit:*\n${CIRCLE_SHA1}"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Action Required:*\nPlease check the logs and investigate the failure."
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "🔍 View Logs"
+                      },
+                      "url": "${CIRCLE_BUILD_URL}",
+                      "style": "primary"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "📑 Check Report"
+                      },
+                      "url": "https://output.circle-artifacts.com/output/job/${CIRCLE_BUILD_NUM}/artifacts/0/cypress/reports/html/index.html",
+                      "style": "primary"
+                    }
+                  ]
+                }
+              ]
+            }
           channel: "#reports"
 
 workflows:
