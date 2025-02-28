@@ -75,9 +75,10 @@ jobs:
                 }
               ]
             }
-          token: $SLACK_API_TOKEN
 
 workflows:
   run-cypress-tests:
     jobs:
-      - run-cypress
+      - run-cypress:
+          context:
+            - cypress-context
