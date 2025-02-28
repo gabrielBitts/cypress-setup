@@ -30,51 +30,13 @@ jobs:
       - store_artifacts:
           name: Uploading HTML Report
           path: cypress/reports/html
+      - run:
+          name: Set Slack Template
+          command: |
+              echo 'export SLACK_TEMPLATE=$(cat ./templates/slack-message.json)' >> $BASH_ENV
       - slack/notify:
           event: fail
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*❌ Cypress Test Failed!*"
-                  }
-                },
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Project:* My Project"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Branch:* ${CIRCLE_BRANCH}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Commit:* ${CIRCLE_SHA1}"
-                    }
-                  ]
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "🔍 View Logs"
-                      },
-                      "url": "${CIRCLE_BUILD_URL}",
-                      "style": "primary"
-                    }
-                  ]
-                }
-              ]
-            }
+          custom: SLACK_TEMPLATE
           channel: "#reports"
 
 workflows:
