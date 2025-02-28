@@ -32,7 +32,7 @@ jobs:
           path: cypress/reports/html
       - slack/notify:
           event: fail
-          custom: slack-message.json
+          custom: ./slack-message.json
 
 workflows:
   run-cypress-tests:
